@@ -12,6 +12,8 @@
 		32F5DEC4284633CD004E880F /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC2284633CD004E880F /* Queue.cpp */; };
 		32F5DEC728466602004E880F /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC528466602004E880F /* Stack.cpp */; };
 		32F5DECA28466AA5004E880F /* stackTesting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC828466AA5004E880F /* stackTesting.cpp */; };
+		32F5DECD28468A59004E880F /* ActiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DECB28468A59004E880F /* ActiveObject.cpp */; };
+		32F5DECF2846B51D004E880F /* QueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DECE2846B51D004E880F /* QueueTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +38,11 @@
 		32F5DEC528466602004E880F /* Stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stack.cpp; sourceTree = "<group>"; };
 		32F5DEC628466602004E880F /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
 		32F5DEC828466AA5004E880F /* stackTesting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stackTesting.cpp; sourceTree = "<group>"; };
-		32F5DEC928466AA5004E880F /* stackTesting.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stackTesting.hpp; sourceTree = "<group>"; };
+		32F5DECB28468A59004E880F /* ActiveObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActiveObject.cpp; sourceTree = "<group>"; };
+		32F5DECC28468A59004E880F /* ActiveObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ActiveObject.hpp; sourceTree = "<group>"; };
+		32F5DECE2846B51D004E880F /* QueueTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueTest.cpp; sourceTree = "<group>"; };
+		32F5DED02846B643004E880F /* stackTesting.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stackTesting.hpp; sourceTree = "<group>"; };
+		32F5DED12846B65A004E880F /* QueueTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueueTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,12 @@
 				32F5DEC3284633CD004E880F /* Queue.hpp */,
 				32F5DEC528466602004E880F /* Stack.cpp */,
 				32F5DEC628466602004E880F /* Stack.hpp */,
+				32F5DECB28468A59004E880F /* ActiveObject.cpp */,
+				32F5DECC28468A59004E880F /* ActiveObject.hpp */,
 				32F5DEC828466AA5004E880F /* stackTesting.cpp */,
-				32F5DEC928466AA5004E880F /* stackTesting.hpp */,
+				32F5DED02846B643004E880F /* stackTesting.hpp */,
+				32F5DECE2846B51D004E880F /* QueueTest.cpp */,
+				32F5DED12846B65A004E880F /* QueueTest.h */,
 			);
 			path = Ex6;
 			sourceTree = "<group>";
@@ -140,9 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F5DEC728466602004E880F /* Stack.cpp in Sources */,
+				32F5DECF2846B51D004E880F /* QueueTest.cpp in Sources */,
 				32F5DEC4284633CD004E880F /* Queue.cpp in Sources */,
 				32F5DECA28466AA5004E880F /* stackTesting.cpp in Sources */,
 				32227EC5284524B100F386BB /* main.cpp in Sources */,
+				32F5DECD28468A59004E880F /* ActiveObject.cpp in Sources */,
 				32F5DEC128462F03004E880F /* Mutex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

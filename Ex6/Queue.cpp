@@ -37,9 +37,10 @@ Queue::~Queue()
 void Queue::enQ(void *ptr)
 {
     Lock.ScopeLock();
-    if (atomicSize == 0) // If the queue is empty
+    if (Value == NULL) // If the queue is empty
     {
         Value = ptr;
+        Lock.CondSignal(IsEmptyCond);
     }
     else
     {
@@ -51,28 +52,21 @@ void Queue::enQ(void *ptr)
         if (Next == NULL)
             Next = tmp; // The next element is also the last one.
     }
-    atomicSize ++;
-    if (atomicSize == 1)
-        Lock.CondSignal(IsEmptyCond);
+}
+
+void Queue::WaitNotEmpty(pthread_cond_t *cond)
+{
+    while (Value == NULL) // The thread is instructed to wait to deQ if empty.
+    {
+        Lock.CondWait(cond);
+    }
 }
 
 void* Queue::deQ()
 {
     Lock.Aquire();
-    std::cout << "Waiting to deQ...\n";
-    if (atomicSize == 0) // The thread is instructed to wait to deQ if empty.
-    {
-        Lock.CondWait(IsEmptyCond);
-    }
-    atomicSize --;
-    std::cout << "There's an element we can deQ...\n";
-
+    WaitNotEmpty(IsEmptyCond);
     void *ptr = Value; // Save value for return
-    if (ptr == NULL)
-    {
-        printf("IM HERE");
-    }
-    printf("DEBUG: WeakPointCheck[0] %d\n", ptr);
     this->Value = NULL; // Reset current value (We can't be sure there's next value yet)
     if (Next != NULL) // If last value
     {
@@ -80,6 +74,16 @@ void* Queue::deQ()
         Next = Next->Next;
     }
     Lock.Free();
-    printf("DEBUG: WeakPointCheck[0] %d\n", ptr); // At the beginning I was getting NULL pointer, after a few times I ran it (to debug it) I was no longer getting this exception.
     return ptr;
+}
+
+bool Queue::IsEmpty()
+{
+    Lock.ScopeLock();
+    return Value == NULL;
+}
+
+ScopeLocker Queue::getScopeLock()
+{
+    return Lock.ScopeLock();
 }

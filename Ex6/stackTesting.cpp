@@ -5,8 +5,19 @@
 //  Created by Ofir Rubin on 31/05/2022.
 //
 
-#include "stackTesting.hpp"
+#include <stdio.h>
 
+#include <iostream>
+#include "Mutex.hpp"
+#include "pthread.h"
+#include <stdio.h>
+#include <unistd.h>
+
+#include "Stack.hpp"
+
+using std::cout;
+using std::endl;
+using std::string;
 static Stack s1 = Stack::CreateThreadSafe();
 
 void *threadfunc(void *parm)

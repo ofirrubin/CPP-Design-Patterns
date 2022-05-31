@@ -25,8 +25,11 @@ private:
 public:
     Queue(bool IsHead);
     ~Queue();
+    bool IsEmpty();
     void enQ(void *ptr);
     void* deQ();
+    void WaitNotEmpty(pthread_cond_t *cond);
+    ScopeLocker getScopeLock();
 };
 
 #endif /* Queue_hpp */
