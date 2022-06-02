@@ -20,16 +20,19 @@ private:
     Queue *Next = NULL;
     Queue *Last = NULL;
     pthread_cond_t *IsEmptyCond = NULL;
-    int atomicSize = 0;
-    
+    void Clear(bool free);
 public:
     Queue(bool IsHead);
+    Queue();
     ~Queue();
     bool IsEmpty();
     void enQ(void *ptr);
+    void enQ_Copy(void *ptr, size_t size);
     void* deQ();
     void WaitNotEmpty(pthread_cond_t *cond);
     ScopeLocker getScopeLock();
+    void Clear();
+    void ClearAndFree();
 };
 
 #endif /* Queue_hpp */

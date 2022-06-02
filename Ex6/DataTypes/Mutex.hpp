@@ -13,6 +13,15 @@
 #include <errno.h>
 #include <iostream>
 
+class MutexException: public std::exception
+{
+  virtual const char* what() const throw()
+  {
+    return "an error occured during locking/unlocking mutex";
+  }
+};
+
+
 class ScopeLocker
 {
 private:
@@ -30,7 +39,7 @@ public:
     bool allocated = false;
 public:
     Mutex(pthread_mutex_t ulock);
-    Mutex(bool IsEmpty = true);
+    Mutex();
     ScopeLocker ScopeLock();
     void CondWait(pthread_cond_t *wait);
     void CondSignal(pthread_cond_t *wait);

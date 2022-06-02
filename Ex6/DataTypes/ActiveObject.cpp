@@ -7,31 +7,10 @@
 
 #include "ActiveObject.hpp"
 
-ActivePayload::ActivePayload(void (*prework_func)(void *payload), void (*afterwork_func)(void *payload), void *payload)
-{
-    this->prework = prework_func;
-    this->afterwork = afterwork_func;
-    this->payload = payload;
-}
-
-void ActivePayload::PreWork()
-{
-    (*prework)(payload);
-}
-
-void ActivePayload::PostWork()
-{
-    (*afterwork)(payload);
-}
-
-
 void ActiveObject::ActiveWorker(){
     printf("Active worker is up at background...\n");
-    pthread_cond_t waiter = PTHREAD_COND_INITIALIZER;
     while(true)
     {
-        q->getScopeLock();
-        q->WaitNotEmpty(&waiter);
         void *ptr = q->deQ();
         PreWorkFunc(ptr);
         PostWorkFunc(ptr);
@@ -59,7 +38,7 @@ ActiveObject::~ActiveObject()
     while (! q->IsEmpty())
     {
         //free(q->deQ()); // Free memory
-        printf("Deleting... removing %s\n", (char *)q->deQ());
+        printf("[Warning: Memory is not free'd, Use destoryAO to free()] Removing %s\n", (char *)q->deQ());
     }
     //q->~Queue(); // Explicitly tear apart q;
 }
@@ -68,3 +47,12 @@ void ActiveObject::AddJob(void *payload){
 } // Add to queue
 
 
+void ActiveObject::destroyAO() // USE ONLY IF ALL QUEUE ELEMENTS CAN BE FREED BY free() FUNCTION
+{
+    pthread_cancel(workerThread);
+    while (! q->IsEmpty())
+    {
+        free(q->deQ()); // Free memory
+        printf("DEBUG: destoryAO() free() called\n");
+    }
+}

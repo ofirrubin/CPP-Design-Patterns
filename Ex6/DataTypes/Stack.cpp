@@ -22,7 +22,7 @@ Stack::~Stack(){
 }
 void Stack::SetThreadSafe()
     {
-        lock = Mutex(false);
+        lock = Mutex();
         // Set pthread cond
         IsEmptyCond = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
         pthread_cond_init(IsEmptyCond, NULL);

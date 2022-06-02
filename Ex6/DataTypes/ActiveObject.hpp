@@ -10,23 +10,13 @@
 
 #include <stdio.h>
 #include "Queue.hpp"
-class ActivePayload
-{
-private:
-    void (*prework)(void *payload);
-    void (*afterwork)(void *payload);
-    void *payload;
-public:
-    ActivePayload(void (*prework)(void *payload), void (*afterwork)(void *payload), void *payload);
-    void PreWork();
-    void PostWork();
-};
 
 class ActiveObject
 {
 private:
     Queue *q;
     pthread_t workerThread;
+    pthread_cond_t waiter;
     void (*PreWorkFunc)(void *payload);
     void (*PostWorkFunc)(void *payload);
     static void* ActiveWorkerWrapper(void *This);
@@ -36,6 +26,7 @@ public:
     ActiveObject(void (*PreWorkFunc)(void *payload), void (*PostWorkFunc)(void *payload), Queue *queue);
     ~ActiveObject();
     void AddJob(void *payload); // Add to queue
+    void destroyAO();
 };
 
 #endif /* ActiveObject_hpp */
