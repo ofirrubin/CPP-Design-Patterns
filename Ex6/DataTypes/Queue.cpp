@@ -50,8 +50,10 @@ Queue::~Queue()
     ClearAndFree();
     if (IsEmptyCond != NULL)
     {
-        std::cout << "DEBUG: [IsEmptyCond] pthread_cond_destroy returned [" << pthread_cond_destroy(IsEmptyCond) << "]\n";
-        free(IsEmptyCond);
+        int c = pthread_cond_destroy(IsEmptyCond);
+        std::cout << "DEBUG: [IsEmptyCond] pthread_cond_destroy returned [" << c << "]\n";
+        if (!c) // We can free only if we are not using it/ allocated it. if destory was failed we can't free.
+            free(IsEmptyCond);
     }
 }
 
@@ -109,13 +111,61 @@ void* Queue::deQ()
     return ptr;
 }
 
+
+
 bool Queue::IsEmpty()
 {
     Lock.ScopeLock();
     return Value == NULL;
 }
 
-ScopeLocker Queue::getScopeLock()
-{
-    return Lock.ScopeLock();
+// Ban / Kick / Remove is useful in cases such in Reactor.
+bool Queue::RemoveFromQueue(void *other, size_t size, bool free_val){ // Comparing using memcmp
+    Lock.ScopeLock();
+    Queue *current = this;
+    Queue *before = NULL;
+    while(current->Value){
+        if (memcmp(current->Value, other, size)){
+            if (free_val)
+                free(current->Value);
+            this->Value = NULL;
+
+            if (current->Next != NULL)
+            {
+                current->Value = Next->Value;
+                current->Next = Next->Next;
+            }
+            if (before){  // Make sure the element before is updated
+                before->Next = current;
+            }
+            // the removed object will be free'd by garbage collector.
+            return true;
+        }
+        else
+        {
+            before = current;
+            current = current->Next;
+        }
+        
+    }
+    return false;
+}
+
+
+
+// ALIAS FUNCTIONS: To make functions signatures as requested
+Queue *createQ(){
+    return new Queue();
+}
+
+void destroyQ(Queue *q){
+    q->~Queue();
+}
+
+void enQ(Queue *q, void *ptr){
+    q->enQ(ptr);
+}
+
+void *deQ(Queue *q){
+    return q->deQ();
 }

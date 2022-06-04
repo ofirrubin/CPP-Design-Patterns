@@ -7,21 +7,22 @@
 #include "QueueTest.h"
 
 
-static Queue t = new Queue(true);
+static Queue *t;
 
 void *tFunc(void *parm)
 {
-    printf("deQ element: %s\n", (char *)t.deQ());
+    printf("deQ element: %s\n", (char *)t->deQ());
     return (void *)0;
 }
 
 int queue_test(void) {
-    t.enQ((void *)"1");
-    t.enQ((void *)"2");
-    t.enQ((void *)"3");
-    t.enQ((void *)"4");
-    t.enQ((void *)"5");
-    t.enQ((void *)"7");
+    t = new Queue(true);
+    t->enQ((void *)"1");
+    t->enQ((void *)"2");
+    t->enQ((void *)"3");
+    t->enQ((void *)"4");
+    t->enQ((void *)"5");
+    t->enQ((void *)"7");
     int i, rc, numThreads = 8;
     pthread_t threadid[numThreads];
     printf("Create %d threads\n", numThreads);
@@ -32,9 +33,9 @@ int queue_test(void) {
     }
 
     sleep(0.1); // Push is actually signalling
-    t.enQ((void *)"6");
+    t->enQ((void *)"6");
     sleep(0.2); // Push is actually signalling
-    t.enQ((void *)"Last item!");
+    t->enQ((void *)"Last item!");
     
     printf("Wait for threads\n");
     for (i=0; i<numThreads; ++i) {

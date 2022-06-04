@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-#include "Mutex.hpp"
+#include "Guard.hpp"
 
 class Queue
 {
@@ -30,9 +30,13 @@ public:
     void enQ_Copy(void *ptr, size_t size);
     void* deQ();
     void WaitNotEmpty(pthread_cond_t *cond);
-    ScopeLocker getScopeLock();
     void Clear();
     void ClearAndFree();
+    bool RemoveFromQueue(void *ptr, size_t size, bool free_val); // Comparing using memcmp
 };
 
+Queue *createQ();
+void destoryQ(Queue *ptr);
+void enQ(Queue *ptr, void *val);
+void *deQ(Queue *ptr);
 #endif /* Queue_hpp */

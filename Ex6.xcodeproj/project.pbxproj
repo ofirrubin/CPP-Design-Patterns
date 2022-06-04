@@ -8,20 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		32227EC5284524B100F386BB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32227EC4284524B100F386BB /* main.cpp */; };
-		32F5DEC128462F03004E880F /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEBF28462F03004E880F /* Mutex.cpp */; };
+		32F5DEC128462F03004E880F /* Guard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEBF28462F03004E880F /* Guard.cpp */; };
 		32F5DEC4284633CD004E880F /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC2284633CD004E880F /* Queue.cpp */; };
 		32F5DEC728466602004E880F /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC528466602004E880F /* Stack.cpp */; };
 		32F5DECA28466AA5004E880F /* stackTesting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEC828466AA5004E880F /* stackTesting.cpp */; };
 		32F5DECD28468A59004E880F /* ActiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DECB28468A59004E880F /* ActiveObject.cpp */; };
 		32F5DECF2846B51D004E880F /* QueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DECE2846B51D004E880F /* QueueTest.cpp */; };
-		32F5DED42846C82F004E880F /* ChainedActiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DED22846C82F004E880F /* ChainedActiveObject.cpp */; };
 		32F5DED72846D656004E880F /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DED52846D656004E880F /* TCPServer.cpp */; };
 		32F5DEDA2846DABD004E880F /* Singleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DED82846DABD004E880F /* Singleton.cpp */; };
 		32F5DEE02847E16F004E880F /* SingletonTesting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEDE2847E16F004E880F /* SingletonTesting.cpp */; };
+		32F5DEE62848ADF1004E880F /* Reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEE42848ADF1004E880F /* Reactor.cpp */; };
+		32F5DEE92848C1C6004E880F /* main1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEE72848C1C6004E880F /* main1.cpp */; };
+		32F5DEEC2848D5D8004E880F /* Singleton_Mmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEEA2848D5D8004E880F /* Singleton_Mmap.cpp */; };
+		32F5DEF02848FDDB004E880F /* PollServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEEE2848FDDB004E880F /* PollServer.cpp */; };
+		32F5DEF328493FB5004E880F /* ReactorServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEF128493FB5004E880F /* ReactorServer.cpp */; };
+		32F5DF02284A2030004E880F /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 32F5DEF4284A1F2B004E880F /* client.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		32227EBF284524B100F386BB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		32F5DEF9284A202B004E880F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -35,8 +49,8 @@
 /* Begin PBXFileReference section */
 		32227EC1284524B100F386BB /* Ex6 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ex6; sourceTree = BUILT_PRODUCTS_DIR; };
 		32227EC4284524B100F386BB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		32F5DEBF28462F03004E880F /* Mutex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
-		32F5DEC028462F03004E880F /* Mutex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mutex.hpp; sourceTree = "<group>"; };
+		32F5DEBF28462F03004E880F /* Guard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Guard.cpp; sourceTree = "<group>"; };
+		32F5DEC028462F03004E880F /* Guard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Guard.hpp; sourceTree = "<group>"; };
 		32F5DEC2284633CD004E880F /* Queue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
 		32F5DEC3284633CD004E880F /* Queue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
 		32F5DEC528466602004E880F /* Stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stack.cpp; sourceTree = "<group>"; };
@@ -47,18 +61,35 @@
 		32F5DECE2846B51D004E880F /* QueueTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueTest.cpp; sourceTree = "<group>"; };
 		32F5DED02846B643004E880F /* stackTesting.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stackTesting.hpp; sourceTree = "<group>"; };
 		32F5DED12846B65A004E880F /* QueueTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueueTest.h; sourceTree = "<group>"; };
-		32F5DED22846C82F004E880F /* ChainedActiveObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChainedActiveObject.cpp; sourceTree = "<group>"; };
-		32F5DED32846C82F004E880F /* ChainedActiveObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChainedActiveObject.hpp; sourceTree = "<group>"; };
 		32F5DED52846D656004E880F /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
 		32F5DED62846D656004E880F /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
 		32F5DED82846DABD004E880F /* Singleton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton.cpp; sourceTree = "<group>"; };
 		32F5DED92846DABD004E880F /* Singleton.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Singleton.hpp; sourceTree = "<group>"; };
 		32F5DEDE2847E16F004E880F /* SingletonTesting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SingletonTesting.cpp; sourceTree = "<group>"; };
 		32F5DEDF2847E16F004E880F /* SingletonTesting.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SingletonTesting.hpp; sourceTree = "<group>"; };
+		32F5DEE42848ADF1004E880F /* Reactor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reactor.cpp; sourceTree = "<group>"; };
+		32F5DEE52848ADF1004E880F /* Reactor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Reactor.hpp; sourceTree = "<group>"; };
+		32F5DEE72848C1C6004E880F /* main1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main1.cpp; sourceTree = "<group>"; };
+		32F5DEE82848C1C6004E880F /* main1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main1.hpp; sourceTree = "<group>"; };
+		32F5DEEA2848D5D8004E880F /* Singleton_Mmap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Singleton_Mmap.cpp; sourceTree = "<group>"; };
+		32F5DEEB2848D5D8004E880F /* Singleton_Mmap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Singleton_Mmap.hpp; sourceTree = "<group>"; };
+		32F5DEEE2848FDDB004E880F /* PollServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PollServer.cpp; sourceTree = "<group>"; };
+		32F5DEEF2848FDDB004E880F /* PollServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PollServer.hpp; sourceTree = "<group>"; };
+		32F5DEF128493FB5004E880F /* ReactorServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReactorServer.cpp; sourceTree = "<group>"; };
+		32F5DEF228493FB5004E880F /* ReactorServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReactorServer.hpp; sourceTree = "<group>"; };
+		32F5DEF4284A1F2B004E880F /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
+		32F5DEFB284A202B004E880F /* Ex6Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ex6Client; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32227EBE284524B100F386BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F5DEF8284A202B004E880F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				32227EC3284524B100F386BB /* Ex6 */,
+				32F5DEFC284A202B004E880F /* Ex6Client */,
 				32227EC2284524B100F386BB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				32227EC1284524B100F386BB /* Ex6 */,
+				32F5DEFB284A202B004E880F /* Ex6Client */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,10 +120,17 @@
 		32227EC3284524B100F386BB /* Ex6 */ = {
 			isa = PBXGroup;
 			children = (
+				32F5DEE72848C1C6004E880F /* main1.cpp */,
+				32F5DEE82848C1C6004E880F /* main1.hpp */,
 				32227EC4284524B100F386BB /* main.cpp */,
+				32F5DEED2848D5E2004E880F /* SingletonMapFileToMem */,
 				32F5DEE32847E736004E880F /* DataTypes */,
 				32F5DEE22847E70A004E880F /* Testing */,
 				32F5DEE12847E6E8004E880F /* TCPServer */,
+				32F5DEEE2848FDDB004E880F /* PollServer.cpp */,
+				32F5DEEF2848FDDB004E880F /* PollServer.hpp */,
+				32F5DEF128493FB5004E880F /* ReactorServer.cpp */,
+				32F5DEF228493FB5004E880F /* ReactorServer.hpp */,
 			);
 			path = Ex6;
 			sourceTree = "<group>";
@@ -122,18 +162,35 @@
 			children = (
 				32F5DECB28468A59004E880F /* ActiveObject.cpp */,
 				32F5DECC28468A59004E880F /* ActiveObject.hpp */,
-				32F5DEBF28462F03004E880F /* Mutex.cpp */,
-				32F5DEC028462F03004E880F /* Mutex.hpp */,
+				32F5DEBF28462F03004E880F /* Guard.cpp */,
+				32F5DEC028462F03004E880F /* Guard.hpp */,
 				32F5DEC2284633CD004E880F /* Queue.cpp */,
 				32F5DEC3284633CD004E880F /* Queue.hpp */,
 				32F5DEC528466602004E880F /* Stack.cpp */,
 				32F5DEC628466602004E880F /* Stack.hpp */,
-				32F5DED22846C82F004E880F /* ChainedActiveObject.cpp */,
-				32F5DED32846C82F004E880F /* ChainedActiveObject.hpp */,
 				32F5DED82846DABD004E880F /* Singleton.cpp */,
 				32F5DED92846DABD004E880F /* Singleton.hpp */,
+				32F5DEE42848ADF1004E880F /* Reactor.cpp */,
+				32F5DEE52848ADF1004E880F /* Reactor.hpp */,
 			);
 			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		32F5DEED2848D5E2004E880F /* SingletonMapFileToMem */ = {
+			isa = PBXGroup;
+			children = (
+				32F5DEEA2848D5D8004E880F /* Singleton_Mmap.cpp */,
+				32F5DEEB2848D5D8004E880F /* Singleton_Mmap.hpp */,
+			);
+			path = SingletonMapFileToMem;
+			sourceTree = "<group>";
+		};
+		32F5DEFC284A202B004E880F /* Ex6Client */ = {
+			isa = PBXGroup;
+			children = (
+				32F5DEF4284A1F2B004E880F /* client.c */,
+			);
+			path = Ex6Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +213,23 @@
 			productReference = 32227EC1284524B100F386BB /* Ex6 */;
 			productType = "com.apple.product-type.tool";
 		};
+		32F5DEFA284A202B004E880F /* Ex6Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F5DEFF284A202B004E880F /* Build configuration list for PBXNativeTarget "Ex6Client" */;
+			buildPhases = (
+				32F5DEF7284A202B004E880F /* Sources */,
+				32F5DEF8284A202B004E880F /* Frameworks */,
+				32F5DEF9284A202B004E880F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ex6Client;
+			productName = Ex6Client;
+			productReference = 32F5DEFB284A202B004E880F /* Ex6Client */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -166,6 +240,9 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					32227EC0284524B100F386BB = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					32F5DEFA284A202B004E880F = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
@@ -184,6 +261,7 @@
 			projectRoot = "";
 			targets = (
 				32227EC0284524B100F386BB /* Ex6 */,
+				32F5DEFA284A202B004E880F /* Ex6Client */,
 			);
 		};
 /* End PBXProject section */
@@ -193,17 +271,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F5DEE92848C1C6004E880F /* main1.cpp in Sources */,
+				32F5DEE62848ADF1004E880F /* Reactor.cpp in Sources */,
 				32F5DEC728466602004E880F /* Stack.cpp in Sources */,
 				32F5DECF2846B51D004E880F /* QueueTest.cpp in Sources */,
+				32F5DEF328493FB5004E880F /* ReactorServer.cpp in Sources */,
 				32F5DEC4284633CD004E880F /* Queue.cpp in Sources */,
 				32F5DECA28466AA5004E880F /* stackTesting.cpp in Sources */,
 				32227EC5284524B100F386BB /* main.cpp in Sources */,
 				32F5DECD28468A59004E880F /* ActiveObject.cpp in Sources */,
-				32F5DEC128462F03004E880F /* Mutex.cpp in Sources */,
-				32F5DED42846C82F004E880F /* ChainedActiveObject.cpp in Sources */,
+				32F5DEEC2848D5D8004E880F /* Singleton_Mmap.cpp in Sources */,
+				32F5DEC128462F03004E880F /* Guard.cpp in Sources */,
 				32F5DED72846D656004E880F /* TCPServer.cpp in Sources */,
+				32F5DEF02848FDDB004E880F /* PollServer.cpp in Sources */,
 				32F5DEDA2846DABD004E880F /* Singleton.cpp in Sources */,
 				32F5DEE02847E16F004E880F /* SingletonTesting.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F5DEF7284A202B004E880F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F5DF02284A2030004E880F /* client.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +425,22 @@
 			};
 			name = Release;
 		};
+		32F5DF00284A202B004E880F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32F5DF01284A202B004E880F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -352,6 +458,15 @@
 			buildConfigurations = (
 				32227EC9284524B100F386BB /* Debug */,
 				32227ECA284524B100F386BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32F5DEFF284A202B004E880F /* Build configuration list for PBXNativeTarget "Ex6Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F5DF00284A202B004E880F /* Debug */,
+				32F5DF01284A202B004E880F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

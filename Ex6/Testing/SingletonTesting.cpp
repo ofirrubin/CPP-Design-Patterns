@@ -8,8 +8,8 @@
 #include "SingletonTesting.hpp"
 
 int singleton_test(void) {
-    Queue *singleton1 = Singleton<Queue>::Instance();
-    Queue *singleton2 = Singleton<Queue>::Instance();
+    Queue *singleton1 = Singleton<Queue>::Get();
+    Queue *singleton2 = Singleton<Queue>::Get();
     (*singleton2).enQ_Copy((void *)"Hello", 6);
     (*singleton1).enQ_Copy((void *)"World", 5);
     (*singleton1).enQ_Copy((void *)"Removed", 7);

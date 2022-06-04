@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 #include <iostream>
-#include "Mutex.hpp"
+#include "Guard.hpp"
 #include "pthread.h"
 #include <stdio.h>
 #include <unistd.h>

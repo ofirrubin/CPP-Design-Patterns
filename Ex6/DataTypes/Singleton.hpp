@@ -10,36 +10,54 @@
 
 #include <stdio.h>
 #include "pthread.h"
-#include "Mutex.hpp"
+#include "Guard.hpp"
 
 template <typename T> class Singleton {
 private:
     static inline Mutex* mutex;
     static inline Singleton *skl;
+    static inline bool removed = true;
     T *instance; // "Static" public memeber - class shared value
-    Singleton();
+    Singleton(T *existing = NULL);
 public:
 
-    static T* Instance();
+    static Singleton<T>* Instance(T *val = NULL);
+    static T* Get(); // Get value
     static void Destroy();
     // Disallow copy constructor
     Singleton(Singleton const&) = delete;
     void operator=(Singleton const&) = delete;
 };
 
-// Constructor
-template <typename T> Singleton<T>::Singleton()
+// For some reason if I move the impl. to cpp file it don't recognize the functions, I'll check it later.
+
+template <typename T> Singleton<T>::Singleton(T *existing)
 {
-    Singleton<T>::instance = new T(); // Create new value
+    if (existing)
+        Singleton<T>::instance = existing;
+    else
+        Singleton<T>::instance = new T(); // Create new value
     Singleton<T>::mutex = new Mutex();
 }
 
-template <typename T> T* Singleton<T>::Instance()
+template <typename T> Singleton<T>* Singleton<T>::Instance(T *existing)
 {
-    static Singleton<T> val = Singleton<T>();
-    skl = &val;
-    val.mutex->ScopeLock();
-    return val.instance;
+    static Singleton<T> *val; // Static inline
+    if (removed){
+        val = new Singleton<T>(existing);
+        removed = false;
+        skl = val;
+    }
+    skl->mutex->ScopeLock();
+    return skl;
+}
+
+template <typename T> T* Singleton<T>::Get()
+{
+    if (!skl)
+        Singleton<T>::Instance();
+    skl->mutex->ScopeLock();
+    return skl->instance;
 }
 
 template <typename T> void Singleton<T>::Destroy()
@@ -48,8 +66,11 @@ template <typename T> void Singleton<T>::Destroy()
     if (mutex)
     {
         mutex->Aquire();
-        if (skl)
+        if (skl){
             skl->instance->~T(); // Force destructor - Use default.
+            //skl = NULL; // Remove any connection
+            removed = true;
+        }
         mutex->~Mutex(); // Force destructor, will free & destroy mutex.
     }
 }

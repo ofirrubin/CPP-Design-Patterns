@@ -8,7 +8,7 @@
 #include "ActiveObject.hpp"
 
 void ActiveObject::ActiveWorker(){
-    printf("Active worker is up at background...\n");
+    printf("DEBUG: ActiveObject Running: %s\n", (this->description? this->description: "Unknown"));
     while(true)
     {
         void *ptr = q->deQ();
@@ -25,8 +25,9 @@ void *ActiveObject::ActiveWorkerWrapper(void *This)
 
 ActiveObject::ActiveObject(void (*PreWork)(void *payload),
                            void (*PostWork)(void *payload),
-                           Queue *queue)
+                           Queue *queue, char *description)
 {
+    this -> description = description;
     this -> q = queue;
     this -> PreWorkFunc = PreWork;
     this -> PostWorkFunc = PostWork;

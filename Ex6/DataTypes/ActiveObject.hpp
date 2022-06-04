@@ -21,9 +21,13 @@ private:
     void (*PostWorkFunc)(void *payload);
     static void* ActiveWorkerWrapper(void *This);
     void ActiveWorker(); // Background worker, wait for new objcet to
-
+    
+    char *description;
 public:
-    ActiveObject(void (*PreWorkFunc)(void *payload), void (*PostWorkFunc)(void *payload), Queue *queue);
+    ActiveObject(void (*PreWorkFunc)(void *payload),
+                 void (*PostWorkFunc)(void *payload),
+                 Queue *queue,
+                 char *description = NULL);
     ~ActiveObject();
     void AddJob(void *payload); // Add to queue
     void destroyAO();

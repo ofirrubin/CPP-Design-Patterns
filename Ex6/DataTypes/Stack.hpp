@@ -12,7 +12,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#include "Mutex.hpp"
+#include "Guard.hpp"
 
 //
 //  Stack.cpp

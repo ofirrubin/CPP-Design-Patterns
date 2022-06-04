@@ -17,4 +17,5 @@ using std::cout;
 using std::endl;
 using std::string;
 
+int singleton_test(void);
 #endif /* SingletonTesting_hpp */

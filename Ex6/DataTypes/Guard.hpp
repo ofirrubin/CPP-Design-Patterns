@@ -2,6 +2,9 @@
 //  Mutex.hpp
 //  Ex6
 //
+//  Answer Q.4 : No, we can't assure that while caller is using the strtok another caller won't call it too.
+//  The Guard can protect from asyncronized calles but it won't block other callers; since the function uses static variables they'll have acess to them too and might change them. On the other hand strtok_r requires pointer to the last position so other callings won't change the usage of others.
+//
 //  Created by Ofir Rubin on 31/05/2022.
 //
 
