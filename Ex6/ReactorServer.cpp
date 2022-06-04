@@ -14,7 +14,6 @@
 #define SOCKET_READ_TIMEOUT_SEC 1
 
 Reactor *reactor;
-struct pollfd *listener;
 
 void ClientHandler(void *pfd){
     signed long rc;
@@ -111,9 +110,8 @@ int start_reactor_server () // Mixed beejs idea with https://www.ibm.com/docs/en
         exit(-1);
     }
     reactor = new Reactor(ClientHandler); // Default handler is client handler
-    listener = reactor->AddPullIn(listen_sd, false);
+    reactor->AddPullIn(listen_sd, false);
     reactor->InstallHandler(listen_sd, AcceptClients);
-    //AcceptClients(listen_sd);
     reactor->EventLoop(listen_sd);
     return 0;
 }

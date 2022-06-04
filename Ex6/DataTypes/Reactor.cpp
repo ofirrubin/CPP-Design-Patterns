@@ -84,5 +84,4 @@ void Reactor::MarkHandled(struct pollfd *ptr){
     mutex->ScopeLock();
     ptr->fd = 0;
     numPolls --;
-    compress_fds(); // Push left.
 }

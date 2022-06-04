@@ -29,6 +29,6 @@ struct MetaData{ // Who it belongs and what's its address
     char *ptr;
 };
 
-int main1(void);
+int main(void);
 
 #endif /* main1_hpp */

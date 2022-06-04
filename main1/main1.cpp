@@ -123,7 +123,7 @@ void *client_handler(void *args)
     return 0;
 }
 
-int main1(void) {
+int main(void) {
     socket_input = new Queue();
     cipher_output = new Queue();
     inverse_output = new Queue();

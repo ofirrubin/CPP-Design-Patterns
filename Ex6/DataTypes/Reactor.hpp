@@ -23,13 +23,11 @@
 
 // The idea is based on: http://www.dre.vanderbilt.edu/~schmidt/PDF/reactor-siemens.pdf
 // But handler is'nt an object here, we use fd & void functions as handlers.
-// In addition we also allow multithreading by semi threadpool.
+// In addition we also allow multithreading by protecting with mutex.
 
 
 class Reactor{
 private:
-    void compress_fds();
-
     int numPolls = 0;
     struct pollfd fds[MAXPOLL];
     Mutex *mutex;

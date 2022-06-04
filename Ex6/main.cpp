@@ -10,16 +10,10 @@
 //#include "SingletonTesting.hpp"
 //#include "Singleton_Mmap.hpp"
 #include "ReactorServer.hpp"
-#include "PollServer.hpp"
+//#include "PollServer.hpp"
+//#include "ActiveObjectTesting.hpp"
 
-int main(void){
-    //singleton_test();
-    //main1();
-    //queue_test();
-    //Reactor r = Reactor();
-    //r.InstallHandler(stdin, <#void (*Handler)()#>)
-    //main2();
+int main(){
     start_reactor_server();
-    //start_server();
     return 0;
 }
