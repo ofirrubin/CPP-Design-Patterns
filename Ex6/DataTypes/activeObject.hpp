@@ -16,7 +16,6 @@ class ActiveObject
 private:
     Queue *q;
     pthread_t workerThread;
-    pthread_cond_t waiter;
     void (*PreWorkFunc)(void *payload);
     void (*PostWorkFunc)(void *payload);
     static void* ActiveWorkerWrapper(void *This);
