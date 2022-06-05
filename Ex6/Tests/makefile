@@ -6,12 +6,15 @@ G = $(SF)/guard.hpp
 Q = $(SF)/queue.hpp
 S = $(SF)/singleton.hpp
 AO = $(SF)/activeObject.hpp
+R = $(SF)/reactor.hpp
 STRUCTURES = $(SF)/structures.so
 
 # an alias for outer folder
 tests: all
 
 all: structures activeObject queue singleton
+
+$(STRUCTURES): structures
 
 # This is a requirement for using the shared library
 structures: # Make all from inner
@@ -31,6 +34,7 @@ activeObject: activeObjectTesting.o $(STRUCTURES)
 	$(CC) $(FLAGS) -o activeObject activeObjectTesting.o $(STRUCTURES)	
 activeObjectTest.o: activeObjectTesting.cpp activeObjectTesting.hpp $(AO) $(Q)
 	$(CC) $(FLAGS) -c activeObjectTesting.cpp
+
 
 .PHONY: clean all
 

@@ -28,8 +28,8 @@ singleton.cpp:
 
 main1: client
 	$(call makeEx6, $@) # $@ is the label name
-	cp $(MAIN1_DIR)/main.cpp main1.cpp
-	cp $(MAIN1_DIR)/main.hpp main1.hpp
+	cp $(MAIN1_DIR)/main1.cpp main1.cpp
+	cp $(MAIN1_DIR)/main1.hpp main1.hpp
 	echo "File at $(ROOT)/$@ and requires to be at this relative path."
 
 reactor.cpp: client
@@ -37,7 +37,7 @@ reactor.cpp: client
 	cp $(DT)/reactor.hpp reactor.hpp
 	cp $(RS)/reactorServer.cpp reactorServer.cpp
 	cp $(RS)/reactorServer.hpp reactorServer.hpp
-	$(call makeEx6, $@)
+	$(call makeEx6, reactorServer)
 
 client: 
 	$(call makeEx6, $@)

@@ -15,6 +15,7 @@
 #include "guard.hpp"
 #include "queue.hpp"
 
+#include <sys/socket.h>
 #include <cstring>
 #include <sys/poll.h>
 #include <map>
@@ -42,7 +43,7 @@ public:
     void SetPullIn(struct pollfd *ptr, int fd, bool isRequest);
     struct pollfd * AddPullIn(int fd, bool isRequest);
     void MarkHandled(struct pollfd *ptr);
-    void EventLoop(int listen_sd);
+    void EventLoop(void);
 };
 
 #endif /* Reactor_hpp */

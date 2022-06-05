@@ -6,7 +6,7 @@
 //
 
 #include "reactor.hpp"
-#include <sys/socket.h>
+
 bool end_server = false;
 
 Reactor::Reactor(void (*defaultHandler)(void *)){
@@ -30,7 +30,7 @@ bool Reactor::RemoveHandler(int fd){
 }
 
 
-void Reactor::EventLoop(int listen_sd){
+void Reactor::EventLoop(void){
     int current_size, i;
     do
     {

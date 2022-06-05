@@ -105,6 +105,6 @@ int main(void) // Mixed beejs server with https://www.ibm.com/docs/en/i/7.4?topi
     reactor = new Reactor(ClientHandler); // Default handler is client handler
     reactor->AddPullIn(listen_sd, false);
     reactor->InstallHandler(listen_sd, AcceptClients);
-    reactor->EventLoop(listen_sd);
+    reactor->EventLoop();
     return 0;
 }
