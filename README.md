@@ -27,8 +27,8 @@ client will be copied and created by using `make reactor` and `make main1`, reac
 
   
 Although developed in OOP style, I also created alias functions for enQ, deQ as required.
-  
-
+ 
+ reactorServer is also reactor testing since the reactor need to have request/respond in order to work with poll. It is as easy and simple as testing with files so I count that as a testing program.
 
 Structure:
 - makefile
