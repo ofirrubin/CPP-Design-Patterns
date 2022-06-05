@@ -3,6 +3,7 @@ STATIC = ar -rcs
 LIB = -pthread
 FLAGS = -g -Wall -fPIC
 
+
 all: structures
 
 # using alias so it knows not to recompile
