@@ -18,7 +18,7 @@ You can also enter the Ex6 directory and make any file you want using its makefi
 
 To remove them use `make clean`.
 
-(*)main1.c: main1.c is named main1.cpp at Ex6/chainedActiveObject/ directory.
+****(*)main1.c****: main1.c is named main1.cpp at Ex6/chainedActiveObject/ directory.
  code and exectuable can be made by using `make main1` or `make main1.c` in this directory.
  
 client will be copied and created by using `make reactor` and `make main1`, reactorServer will also be created by `make reactor`
@@ -33,44 +33,55 @@ Although developed in OOP style, I also created alias functions for enQ, deQ as 
 Structure:
 - makefile
 - Ex6:
- 	DataTypes:
+ 	- DataTypes:
+	
  		- makefile
  		
+		
 		 - activeObject.cpp
 		 - activeObject.hpp
+		 
 		 
 	 	- guard.cpp
 	 	- guard.hpp
 		
+		
 	 	- queue.cpp
 	 	- queue.hpp
+		
 		
 	 	- reactor.cpp
 	 	- reactor.hpp
 		
+		
 	 	- singleton.cpp
 	 	- singleton.hpp
 		
+		
 	 	- tcpServer.cpp
 	 	- tcpServer.hpp
-	 ReactorServer:
+	
+	- ReactorServer:
 	 	- reactorServer.cpp
 	 	- reactorServer.hpp
-	 pollServer:
+	- pollServer:
 	 	- pollServer.cpp
 	 	- pollServer.hpp
-	 SingletonFileMapping:
+	- SingletonFileMapping:
 	 	- singletonMmap.cpp
 	 	- singletonMmap.hpp
-	 Tests:
+	- Tests:
 	 	- makefile
 	 	
+		
 	 	- activeObjectTesting.cpp
 	 	- activeObjectTestiung.hpp
 	 	
+		
 	 	- queueTest.cpp
 	 	- queueTest.hpp
 	 	
+		
 	 	- singletonTesting.cpp
 	 	- singlettonTesting.hpp
 	 	
