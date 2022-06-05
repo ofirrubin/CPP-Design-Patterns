@@ -5,7 +5,7 @@ OPTIONS = -g -Wall
 ROOT = ./Ex6
 DT = $(ROOT)/DataTypes
 SFM = $(ROOT)/SingletonFileMapping
-RS = $(ROOT)/ReactorServer
+RS = $(ROOT)/reactor_server
 MAIN1_DIR = $(ROOT)/chainedActiveObject
 
 define makeEx6

@@ -33,9 +33,9 @@ int main(void) {
             cout << "pthread_create() "<<  rc;
     }
 
-    sleep(0.1); // Push is actually signalling
+    sleep(1); // Push is actually signalling
     t->enQ((void *)"6");
-    sleep(0.2); // Push is actually signalling
+    sleep(1); // Push is actually signalling
     t->enQ((void *)"Last item!");
     
     printf("Wait for threads\n");
